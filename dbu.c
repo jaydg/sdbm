@@ -4,10 +4,10 @@
 #include <string.h>
 
 #include "sdbm.h"
+#include "util.h"
 
 extern int	getopt();
 extern char	*strchr();
-extern void	oops();
 
 char *progname;
 

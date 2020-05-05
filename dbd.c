@@ -9,10 +9,9 @@
 #include <sys/file.h>
 
 #include "sdbm.h"
+#include "util.h"
 
 char *progname;
-extern void oops();
-
 
 #define empty(page)	(((short *) page)[0] == 0)
 

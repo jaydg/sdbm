@@ -7,10 +7,11 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/file.h>
+
 #include "sdbm.h"
+#include "util.h"
 
 char *progname;
-extern void oops();
 
 static void sdump(int pagf);
 static int pagestat(char *pag);
