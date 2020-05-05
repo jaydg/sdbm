@@ -1,20 +1,27 @@
 #include <errno.h>
-#include <stdlib.h>
+#include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "sdbm.h"
 
 void
-oops(char *s1, char *s2)
+oops(const char *fmt, ...)
 {
 	extern char *progname;
+	va_list argp;
 
 	if (progname)
 		fprintf(stderr, "%s: ", progname);
-	fprintf(stderr, s1, s2);
+
+	va_start(argp, fmt);
+	vfprintf(stderr, fmt, argp);
+	va_end(argp);
+
 	if (errno > 0)
 		fprintf(stderr, " (%s)", strerror(errno));
+
 	fprintf(stderr, "\n");
 	exit(1);
 }
@@ -34,8 +41,7 @@ okpage(char *pag)
 
 	off = PBLKSIZ;
 	for (ino++; n; ino += 2) {
-		if (ino[0] > off || ino[1] > off ||
-		    ino[1] > ino[0])
+		if (ino[0] > off || ino[1] > off || ino[1] > ino[0])
 			return 0;
 		off = ino[1];
 		n -= 2;

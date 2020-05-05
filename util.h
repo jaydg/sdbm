@@ -7,6 +7,6 @@
  * author: jdegroot@web.de
  * status: public domain.
  */
-void oops(char *s1, char *s2);
+void oops(const char *fmt, ...);
 
 int okpage(char *pag);
