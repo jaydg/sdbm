@@ -26,7 +26,7 @@ main(int argc, char **argv)
 
 	progname = argv[0];
 
-	if (p = argv[1]) {
+	if (argc > 1 && (p = argv[1])) {
 		name = (char *) malloc((n = strlen(p)) + 5);
 		strcpy(name, p);
 		strcpy(name + n, ".pag");
