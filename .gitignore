@@ -1,0 +1,7 @@
+*.o
+
+dba
+dbd
+dbe
+dbu
+libsdbm.a
