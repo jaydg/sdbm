@@ -48,8 +48,8 @@ char *optarg;			       /* Global argument pointer. */
 char
 getopt(int argc, char **argv, char *optstring)
 {
-	register int c;
-	register char *place;
+	int c;
+	char *place;
 	extern char *index();
 	static int optind = 0;
 	static char *scan = NULL;

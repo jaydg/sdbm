@@ -47,9 +47,9 @@ main(int argc, char **argv)
 static void
 sdump(int pagf)
 {
-	register r;
-	register n = 0;
-	register o = 0;
+	int r;
+	int n = 0;
+	int o = 0;
 	char pag[PBLKSIZ];
 
 	while ((r = read(pagf, pag, PBLKSIZ)) > 0) {
@@ -71,9 +71,9 @@ sdump(int pagf)
 static void
 dispage(char *pag)
 {
-	register i, n;
-	register off;
-	register short *ino = (short *) pag;
+	int i, n;
+	int off;
+	short *ino = (short *) pag;
 
 	off = PBLKSIZ;
 	for (i = 1; i < ino[0]; i += 2) {

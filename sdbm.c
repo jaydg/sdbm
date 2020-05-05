@@ -73,10 +73,10 @@ datum nullitem = {NULL, 0};
 DBM *
 dbm_open(char *file, int flags, int mode)
 {
-	register DBM *db;
-	register char *dirname;
-	register char *pagname;
-	register int n;
+	DBM *db;
+	char *dirname;
+	char *pagname;
+	int n;
 
 	if (file == NULL || !*file)
 		return errno = EINVAL, (DBM *) NULL;
@@ -102,7 +102,7 @@ dbm_open(char *file, int flags, int mode)
 DBM *
 dbm_prep(char *dirname, char *pagname, int flags, int mode)
 {
-	register DBM *db;
+	DBM *db;
 	struct stat dstat;
 
 	if ((db = (DBM *) malloc(sizeof(DBM))) == NULL)
@@ -207,7 +207,7 @@ int
 dbm_store(DBM *db, datum key, datum val, int flags)
 {
 	int need;
-	register long hash;
+	long hash;
 
 	if (db == NULL || bad(key))
 		return errno = EINVAL, -1;
@@ -268,7 +268,7 @@ makroom(DBM *db, long hash, int need)
 	char twin[PBLKSIZ];
 	char *pag = db->pagbuf;
 	char *new = twin;
-	register int smax = SPLTMAX;
+	int smax = SPLTMAX;
 
 	do {
 /*
@@ -368,9 +368,9 @@ dbm_nextkey(DBM *db)
 static int
 getpage(DBM *db, long hash)
 {
-	register int hbit;
-	register long dbit;
-	register long pagb;
+	int hbit;
+	long dbit;
+	long pagb;
 
 	dbit = 0;
 	hbit = 0;
@@ -407,8 +407,8 @@ getpage(DBM *db, long hash)
 static int
 getdbit(DBM *db, long dbit)
 {
-	register long c;
-	register long dirb;
+	long c;
+	long dirb;
 
 	c = dbit / BYTESIZ;
 	dirb = c / DBLKSIZ;
@@ -428,8 +428,8 @@ getdbit(DBM *db, long dbit)
 static int
 setdbit(DBM *db, long dbit)
 {
-	register long c;
-	register long dirb;
+	long c;
+	long dirb;
 
 	c = dbit / BYTESIZ;
 	dirb = c / DBLKSIZ;
