@@ -1,5 +1,3 @@
-#define _REGEX_RE_COMP
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -101,6 +99,7 @@ main(int argc, char **argv)
 	DBM *db;
 	datum key;
 	datum content;
+	regex_t *re = NULL;
 
 	flags = O_RDWR;
 	argn = 0;
@@ -216,7 +215,7 @@ main(int argc, char **argv)
 			fprintf(stderr, "Missing regular expression.\n");
 			goto db_exit;
 		}
-		if (re_comp(comarg[1])) {
+		if (!regcomp(re, comarg[1], REG_BASIC | REG_NOSUB)) {
 			fprintf(stderr, "Invalid regular expression\n");
 			goto db_exit;
 		}
@@ -226,7 +225,7 @@ main(int argc, char **argv)
 			goto db_exit;
 		}
 		while (key.dptr != NULL) {
-			if (re_exec(key2s(key))) {
+			if (regexec(re, key2s(key), 0, NULL, 0)) {
 				content = dbm_fetch(db, key);
 				if (dbm_error(db)) {
 					fprintf(stderr, "Error when fetching ");
@@ -245,6 +244,7 @@ main(int argc, char **argv)
 			}
 			key = dbm_nextkey(db);
 		}
+		regfree(re);
 		break;
 
 	case FETCH:
