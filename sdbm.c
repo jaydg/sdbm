@@ -7,10 +7,6 @@
  * core routines
  */
 
-#ifndef lint
-static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
-#endif
-
 #include "sdbm.h"
 #include "tune.h"
 #include "pair.h"
