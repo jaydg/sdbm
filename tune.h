@@ -6,10 +6,6 @@
 
 #define BYTESIZ		8
 
-#ifdef SVID
-#include <unistd.h>
-#endif
-
 /*
  * important tuning parms (hah)
  */
