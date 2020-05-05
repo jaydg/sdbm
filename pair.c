@@ -264,7 +264,7 @@ chkpage(char *pag)
 	int off;
 	short *ino = (short *) pag;
 
-	if ((n = ino[0]) < 0 || n > PBLKSIZ / sizeof(short))
+	if ((n = ino[0]) < 0 || n > PBLKSIZ / (int)sizeof(short))
 		return 0;
 
 	if (n > 0) {
