@@ -30,24 +30,23 @@ typedef struct {
 } cmd;
 
 static cmd cmds[] = {
-
-	"fetch", DLOOK, 	O_RDONLY,
-	"get", DLOOK,		O_RDONLY,
-	"look", DLOOK,		O_RDONLY,
-	"add", DINSERT,		O_RDWR,
-	"insert", DINSERT,	O_RDWR,
-	"store", DINSERT,	O_RDWR,
-	"delete", DDELETE,	O_RDWR,
-	"remove", DDELETE,	O_RDWR,
-	"dump", DCAT,		O_RDONLY,
-	"list", DCAT, 		O_RDONLY,
-	"cat", DCAT,		O_RDONLY,
-	"creat", DCREAT,	O_RDWR | O_CREAT | O_TRUNC,
-	"new", DCREAT,		O_RDWR | O_CREAT | O_TRUNC,
-	"build", DBUILD,	O_RDWR | O_CREAT,
-	"squash", DPRESS,	O_RDWR,
-	"compact", DPRESS,	O_RDWR,
-	"compress", DPRESS,	O_RDWR
+	{ "fetch", DLOOK, 	O_RDONLY },
+	{ "get", DLOOK,		O_RDONLY },
+	{ "look", DLOOK,		O_RDONLY },
+	{ "add", DINSERT,		O_RDWR },
+	{ "insert", DINSERT,	O_RDWR },
+	{ "store", DINSERT,	O_RDWR },
+	{ "delete", DDELETE,	O_RDWR },
+	{ "remove", DDELETE,	O_RDWR },
+	{ "dump", DCAT,		O_RDONLY },
+	{ "list", DCAT, 		O_RDONLY },
+	{ "cat", DCAT,		O_RDONLY },
+	{ "creat", DCREAT,	O_RDWR | O_CREAT | O_TRUNC },
+	{ "new", DCREAT,		O_RDWR | O_CREAT | O_TRUNC },
+	{ "build", DBUILD,	O_RDWR | O_CREAT },
+	{ "squash", DPRESS,	O_RDWR },
+	{ "compact", DPRESS,	O_RDWR },
+	{ "compress", DPRESS,	O_RDWR }
 };
 
 #define CTABSIZ (sizeof (cmds)/sizeof (cmd))
