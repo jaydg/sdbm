@@ -1,7 +1,11 @@
+#define _REGEX_RE_COMP
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/file.h>
+#include <sys/types.h>
+#include <regex.h>
 #include <ctype.h>
 
 #include "sdbm.h"
