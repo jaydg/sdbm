@@ -4,10 +4,6 @@
 
 #include "sdbm.h"
 
-#ifdef BSD42
-#define strchr	index
-#endif
-
 extern int	getopt();
 extern char	*strchr();
 extern void	oops();

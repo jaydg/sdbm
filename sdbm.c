@@ -17,12 +17,7 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#ifdef BSD42
-#include <sys/file.h>
-#else
 #include <fcntl.h>
-#include <memory.h>
-#endif
 #include <errno.h>
 #include <string.h>
 
@@ -127,7 +122,7 @@ int mode;
         db->blkptr = 0;
         db->keyptr = 0;
 /*
- * adjust user flags so that WRONLY becomes RDWR, 
+ * adjust user flags so that WRONLY becomes RDWR,
  * as required by this package. Also set our internal
  * flag for RDONLY if needed.
  */
@@ -417,7 +412,7 @@ register long hash;
  * see if the block we need is already in memory.
  * note: this lookaside cache has about 10% hit rate.
  */
-	if (pagb != db->pagbno) { 
+	if (pagb != db->pagbno) {
 /*
  * note: here, we assume a "hole" is read as 0s.
  * if not, must zero pagbuf first.
