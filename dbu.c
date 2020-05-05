@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include <sys/file.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "sdbm.h"
 #include "util.h"
-
-extern int	getopt();
-extern char	*strchr();
 
 char *progname;
 
@@ -62,8 +60,6 @@ main(int argc, char *argv[])
 {
 	int c;
 	cmd *act;
-	extern int optind;
-	extern char *optarg;
 
 	progname = argv[0];
 

@@ -55,7 +55,6 @@ getopt(int argc, char **argv, char *optstring)
 {
 	int c;
 	char *place;
-	extern char *index();
 	static int optind = 0;
 	static char *scan = NULL;
 
