@@ -1,11 +1,6 @@
 #include <stdio.h>
-#ifndef VMS
 #include <sys/file.h>
 #include <ndbm.h>
-#else
-#include "file.h"
-#include "ndbm.h"
-#endif
 #include <ctype.h>
 
 /***************************************************************************\
@@ -46,10 +41,6 @@
 \***************************************************************************/
 
 char *optarg;			       /* Global argument pointer. */
-
-#ifdef VMS
-#define index  strchr
-#endif
 
 char
 getopt(argc, argv, optstring)
