@@ -66,30 +66,6 @@ int pagf;
 		oops("read failed: block %d", n);
 }
 
-
-#ifdef OLD
-dispage(pag)
-char *pag;
-{
-	register i, n;
-	register off;
-	register short *ino = (short *) pag;
-
-	off = PBLKSIZ;
-	for (i = 1; i < ino[0]; i += 2) {
-		printf("\t[%d]: ", ino[i]);
-		for (n = ino[i]; n < off; n++)
-			putchar(pag[n]);
-		putchar(' ');
-		off = ino[i];
-		printf("[%d]: ", ino[i + 1]);
-		for (n = ino[i + 1]; n < off; n++)
-			putchar(pag[n]);
-		off = ino[i + 1];
-		putchar('\n');
-	}
-}
-#else
 dispage(pag)
 char *pag;
 {
@@ -111,4 +87,3 @@ char *pag;
 		off = ino[i + 1];
 	}
 }
-#endif
