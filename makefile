@@ -14,14 +14,14 @@ MISC = README CHANGES COMPARE sdbm.3 dbe.c dbe.1 dbm.c dbm.h biblio \
 all: dbu dba dbd dbe
 
 dbu: dbu.o sdbm util.o
-	cc $(LDFLAGS) -o dbu dbu.o util.o libsdbm.a
+	$(CC) $(LDFLAGS) -o dbu dbu.o util.o libsdbm.a
 
 dba: dba.o util.o
-	cc $(LDFLAGS) -o dba dba.o util.o
+	$(CC) $(LDFLAGS) -o dba dba.o util.o
 dbd: dbd.o util.o
-	cc $(LDFLAGS) -o dbd dbd.o util.o
+	$(CC) $(LDFLAGS) -o dbd dbd.o util.o
 dbe: dbe.o sdbm
-	cc $(LDFLAGS) -o dbe dbe.o libsdbm.a
+	$(CC) $(LDFLAGS) -o dbe dbe.o libsdbm.a
 
 sdbm: $(OBJS)
 	ar cr libsdbm.a $(OBJS)
@@ -38,7 +38,7 @@ $(OBJS): sdbm.h tune.h pair.h
 # dbu using berkelezoid ndbm routines [if you have them] for testing
 #
 #x-dbu: dbu.o util.o
-#	cc $(CFLAGS) -o x-dbu dbu.o util.o
+#	$(CC) $(CFLAGS) -o x-dbu dbu.o util.o
 lint:
 	lint -abchx $(SRCS)
 
