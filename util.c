@@ -1,6 +1,7 @@
 #include <errno.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "sdbm.h"
 
@@ -12,8 +13,8 @@ oops(char *s1, char *s2)
 	if (progname)
 		fprintf(stderr, "%s: ", progname);
 	fprintf(stderr, s1, s2);
-	if (errno > 0 && errno < sys_nerr)
-		fprintf(stderr, " (%s)", sys_errlist[errno]);
+	if (errno > 0)
+		fprintf(stderr, " (%s)", strerror(errno));
 	fprintf(stderr, "\n");
 	exit(1);
 }
