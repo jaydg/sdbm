@@ -32,13 +32,6 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 #endif
 
 /*
- * externals
- */
-#ifndef sun
-extern int errno;
-#endif
-
-/*
  * forward
  */
 static int getdbit proto((DBM *, long));
