@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <sys/file.h>
-#include <ndbm.h>
 #include <ctype.h>
+
+#include "sdbm.h"
 
 /***************************************************************************\
 **                                                                         **

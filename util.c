@@ -1,9 +1,6 @@
 #include <stdio.h>
-#ifdef SDBM
+
 #include "sdbm.h"
-#else
-#include "ndbm.h"
-#endif
 
 void
 oops(s1, s2)

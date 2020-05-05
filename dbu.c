@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <sys/file.h>
-#ifdef SDBM
-#include "sdbm.h"
-#else
-#include <ndbm.h>
-#endif
 #include <string.h>
+
+#include "sdbm.h"
 
 #ifdef BSD42
 #define strchr	index
@@ -151,7 +148,7 @@ char *file;
 		}
 		break;
 	case DCAT:
-		for (key = dbm_firstkey(db); key.dptr != 0; 
+		for (key = dbm_firstkey(db); key.dptr != 0;
 		     key = dbm_nextkey(db)) {
 			prdatum(stdout, key);
 			putchar('\t');
@@ -175,7 +172,7 @@ char *file;
 			}
 			else
 				oops("bad input; %s", line);
-	
+
 			if (dbm_store(db, key, val, DBM_REPLACE) < 0) {
 				prdatum(stderr, key);
 				fprintf(stderr, ": ");
@@ -218,7 +215,7 @@ register char *str;
 {
 	register int i = CTABSIZ;
 	register cmd *p;
-	
+
 	for (p = cmds; i--; p++)
 		if (strcmp(p->sname, str) == 0)
 			return p;
@@ -240,7 +237,7 @@ datum d;
 			fprintf(stream, "M-");
 			c &= 0177;
 		}
-		if (c == 0177 || c < ' ') 
+		if (c == 0177 || c < ' ')
 			fprintf(stream, "^%c", (c == 0177) ? '?' : c + '@');
 		else
 			putc(c, stream);
