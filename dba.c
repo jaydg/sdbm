@@ -12,9 +12,11 @@
 char *progname;
 extern void oops();
 
+static void sdump(int pagf);
+static int pagestat(char *pag);
+
 int
-main(argc, argv)
-char **argv;
+main(int argc, char **argv)
 {
 	int n;
 	char *p;
@@ -39,8 +41,8 @@ char **argv;
 	return 0;
 }
 
-sdump(pagf)
-int pagf;
+static void
+sdump(int pagf)
 {
 	register b;
 	register n = 0;
@@ -69,8 +71,8 @@ int pagf;
 		oops("read failed: block %d", n);
 }
 
-pagestat(pag)
-char *pag;
+static int
+pagestat(char *pag)
 {
 	register n;
 	register free;

@@ -5,9 +5,7 @@
 #include "sdbm.h"
 
 void
-oops(s1, s2)
-register char *s1;
-register char *s2;
+oops(char *s1, char *s2)
 {
 	extern char *progname;
 
@@ -21,8 +19,7 @@ register char *s2;
 }
 
 int
-okpage(pag)
-char *pag;
+okpage(char *pag)
 {
 	register unsigned n;
 	register off;

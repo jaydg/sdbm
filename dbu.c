@@ -58,9 +58,7 @@ static cmd *parse();
 static void badk(), doit(), prdatum();
 
 int
-main(argc, argv)
-int	argc;
-char *argv[];
+main(int argc, char *argv[])
 {
 	int c;
 	register cmd *act;
@@ -91,9 +89,7 @@ char *argv[];
 }
 
 static void
-doit(act, file)
-register cmd *act;
-char *file;
+doit(cmd *act, char *file)
 {
 	datum key;
 	datum val;
@@ -190,8 +186,7 @@ char *file;
 }
 
 static void
-badk(word)
-char *word;
+badk(char *word)
 {
 	register int i;
 
@@ -207,8 +202,7 @@ char *word;
 }
 
 static cmd *
-parse(str)
-register char *str;
+parse(char *str)
 {
 	register int i = CTABSIZ;
 	register cmd *p;
@@ -220,9 +214,7 @@ register char *str;
 }
 
 static void
-prdatum(stream, d)
-FILE *stream;
-datum d;
+prdatum(FILE *stream, datum d)
 {
 	register int c;
 	register char *p = d.dptr;
@@ -240,5 +232,3 @@ datum d;
 			putc(c, stream);
 	}
 }
-
-

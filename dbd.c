@@ -16,9 +16,11 @@ extern void oops();
 
 #define empty(page)	(((short *) page)[0] == 0)
 
+static void sdump(int pagf);
+static void dispage(char *pag);
+
 int
-main(argc, argv)
-char **argv;
+main(int argc, char **argv)
 {
 	int n;
 	char *p;
@@ -42,8 +44,8 @@ char **argv;
 	return 0;
 }
 
-sdump(pagf)
-int pagf;
+static void
+sdump(int pagf)
 {
 	register r;
 	register n = 0;
@@ -66,8 +68,8 @@ int pagf;
 		oops("read failed: block %d", n);
 }
 
-dispage(pag)
-char *pag;
+static void
+dispage(char *pag)
 {
 	register i, n;
 	register off;

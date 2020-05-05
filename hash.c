@@ -16,9 +16,7 @@
  *      65587   even better. 
  */
 long
-dbm_hash(str, len)
-register char *str;
-register int len;
+dbm_hash(char *str, int len)
 {
 	register unsigned long n = 0;
 

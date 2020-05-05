@@ -45,9 +45,7 @@ static int seepair proto((char *, int, char *, int));
  */
 
 int
-fitpair(pag, need)
-char *pag;
-int need;
+fitpair(char *pag, int need)
 {
 	register int n;
 	register int off;
@@ -64,10 +62,7 @@ int need;
 }
 
 void
-putpair(pag, key, val)
-char *pag;
-datum key;
-datum val;
+putpair(char *pag, datum key, datum val)
 {
 	register int n;
 	register int off;
@@ -93,9 +88,7 @@ datum val;
 }
 
 datum
-getpair(pag, key)
-char *pag;
-datum key;
+getpair(char *pag, datum key)
 {
 	register int i;
 	register int n;
@@ -115,9 +108,7 @@ datum key;
 
 #ifdef SEEDUPS
 int
-duppair(pag, key)
-char *pag;
-datum key;
+duppair(char *pag, datum key)
 {
 	register short *ino = (short *) pag;
 	return ino[0] > 0 && seepair(pag, ino[0], key.dptr, key.dsize) > 0;
@@ -125,9 +116,7 @@ datum key;
 #endif
 
 datum
-getnkey(pag, num)
-char *pag;
-int num;
+getnkey(char *pag, int num)
 {
 	datum key;
 	register int off;
@@ -146,9 +135,7 @@ int num;
 }
 
 int
-delpair(pag, key)
-char *pag;
-datum key;
+delpair(char *pag, datum key)
 {
 	register int n;
 	register int i;
@@ -218,11 +205,7 @@ datum key;
  * return 0 if not found.
  */
 static int
-seepair(pag, n, key, siz)
-char *pag;
-register int n;
-register char *key;
-register int siz;
+seepair(char *pag, int n, char *key, int siz)
 {
 	register int i;
 	register int off = PBLKSIZ;
@@ -238,10 +221,7 @@ register int siz;
 }
 
 void
-splpage(pag, new, sbit)
-char *pag;
-char *new;
-long sbit;
+splpage(char *pag, char *new, long sbit)
 {
 	datum key;
 	datum val;
@@ -282,8 +262,7 @@ long sbit;
  * this could be made more rigorous.
  */
 int
-chkpage(pag)
-char *pag;
+chkpage(char *pag)
 {
 	register int n;
 	register int off;

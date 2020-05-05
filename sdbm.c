@@ -71,10 +71,7 @@ static long masks[] = {
 datum nullitem = {NULL, 0};
 
 DBM *
-dbm_open(file, flags, mode)
-register char *file;
-register int flags;
-register int mode;
+dbm_open(char *file, int flags, int mode)
 {
 	register DBM *db;
 	register char *dirname;
@@ -103,11 +100,7 @@ register int mode;
 }
 
 DBM *
-dbm_prep(dirname, pagname, flags, mode)
-char *dirname;
-char *pagname;
-int flags;
-int mode;
+dbm_prep(char *dirname, char *pagname, int flags, int mode)
 {
 	register DBM *db;
 	struct stat dstat;
@@ -163,8 +156,7 @@ int mode;
 }
 
 void
-dbm_close(db)
-register DBM *db;
+dbm_close(DBM *db)
 {
 	if (db == NULL)
 		errno = EINVAL;
@@ -176,9 +168,7 @@ register DBM *db;
 }
 
 datum
-dbm_fetch(db, key)
-register DBM *db;
-datum key;
+dbm_fetch(DBM *db, datum key)
 {
 	if (db == NULL || bad(key))
 		return errno = EINVAL, nullitem;
@@ -190,9 +180,7 @@ datum key;
 }
 
 int
-dbm_delete(db, key)
-register DBM *db;
-datum key;
+dbm_delete(DBM *db, datum key)
 {
 	if (db == NULL || bad(key))
 		return errno = EINVAL, -1;
@@ -216,11 +204,7 @@ datum key;
 }
 
 int
-dbm_store(db, key, val, flags)
-register DBM *db;
-datum key;
-datum val;
-int flags;
+dbm_store(DBM *db, datum key, datum val, int flags)
 {
 	int need;
 	register long hash;
@@ -278,10 +262,7 @@ int flags;
  * giving up.
  */
 static int
-makroom(db, hash, need)
-register DBM *db;
-long hash;
-int need;
+makroom(DBM *db, long hash, int need)
 {
 	long newp;
 	char twin[PBLKSIZ];
@@ -356,8 +337,7 @@ int need;
  * deletions aren't taken into account. (ndbm bug)
  */
 datum
-dbm_firstkey(db)
-register DBM *db;
+dbm_firstkey(DBM *db)
 {
 	if (db == NULL)
 		return errno = EINVAL, nullitem;
@@ -375,8 +355,7 @@ register DBM *db;
 }
 
 datum
-dbm_nextkey(db)
-register DBM *db;
+dbm_nextkey(DBM *db)
 {
 	if (db == NULL)
 		return errno = EINVAL, nullitem;
@@ -387,9 +366,7 @@ register DBM *db;
  * all important binary trie traversal
  */
 static int
-getpage(db, hash)
-register DBM *db;
-register long hash;
+getpage(DBM *db, long hash)
 {
 	register int hbit;
 	register long dbit;
@@ -428,9 +405,7 @@ register long hash;
 }
 
 static int
-getdbit(db, dbit)
-register DBM *db;
-register long dbit;
+getdbit(DBM *db, long dbit)
 {
 	register long c;
 	register long dirb;
@@ -451,9 +426,7 @@ register long dbit;
 }
 
 static int
-setdbit(db, dbit)
-register DBM *db;
-register long dbit;
+setdbit(DBM *db, long dbit)
 {
 	register long c;
 	register long dirb;
@@ -487,8 +460,7 @@ register long dbit;
  * the page, try the next page in sequence
  */
 static datum
-getnext(db)
-register DBM *db;
+getnext(DBM *db)
 {
 	datum key;
 
