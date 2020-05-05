@@ -164,7 +164,7 @@ main(int argc, char **argv)
 		}
 	}
 
-	if (giveusage | what == YOW | argn < 1) {
+	if (giveusage | (what == YOW) | (argn < 1)) {
 		fprintf(stderr, "Usage: %s databse [-m r|w|rw] [-crtx] -a|-d|-f|-F|-s [key [content]]\n", argv[0]);
 		exit(-1);
 	}
@@ -180,6 +180,10 @@ main(int argc, char **argv)
 		content = read_datum(comarg[2]);
 
 	switch (what) {
+
+	case YOW:
+		/* make compiler happy */
+		break;
 
 	case SCAN:
 		key = dbm_firstkey(db);
