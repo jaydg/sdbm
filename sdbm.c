@@ -16,16 +16,9 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#ifdef __STDC__
-#include <stddef.h>
-#endif
-
-#ifndef NULL
-#define NULL	0
-#endif
 
 /*
  * forward
