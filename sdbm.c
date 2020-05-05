@@ -63,7 +63,7 @@ dbm_open(char *file, int flags, int mode)
 	if (file == NULL || !*file)
 		return errno = EINVAL, (DBM *) NULL;
 /*
- * need space for two seperate filenames
+ * need space for two separate filenames
  */
 	n = strlen(file) * 2 + strlen(DIRFEXT) + strlen(PAGFEXT) + 2;
 
@@ -263,7 +263,7 @@ makroom(DBM *db, long hash, int need)
 		newp = (hash & db->hmask) | (db->hmask + 1);
 
 /*
- * write delay, read avoidence/cache shuffle:
+ * write delay, read avoidance/cache shuffle:
  * select the page for incoming pair: if key is to go to the new page,
  * write out the previous one, and copy the new one over, thus making
  * it the current page. If not, simply write the new page, and we are

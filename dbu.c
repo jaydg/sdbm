@@ -187,7 +187,7 @@ badk(char *word)
 
 	if (progname)
 		fprintf(stderr, "%s: ", progname);
-	fprintf(stderr, "bad keywd %s. use one of\n", word);
+	fprintf(stderr, "bad keyword %s. use one of\n", word);
 	for (i = 0; i < (int)CTABSIZ; i++)
 		fprintf(stderr, "%-8s%c", cmds[i].sname,
 			((i + 1) % 6 == 0) ? '\n' : ' ');
