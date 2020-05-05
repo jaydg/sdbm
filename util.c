@@ -1,3 +1,5 @@
+#include <errno.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "sdbm.h"
@@ -7,8 +9,6 @@ oops(s1, s2)
 register char *s1;
 register char *s2;
 {
-	extern int errno, sys_nerr;
-	extern char *sys_errlist[];
 	extern char *progname;
 
 	if (progname)

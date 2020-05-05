@@ -20,6 +20,8 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #ifdef __STDC__
 #include <stddef.h>
@@ -35,10 +37,6 @@ static char rcsid[] = "$Id: sdbm.c,v 1.16 90/12/13 13:01:31 oz Exp $";
 #ifndef sun
 extern int errno;
 #endif
-
-extern char *malloc proto((unsigned int));
-extern void free proto((void *));
-extern long lseek();
 
 /*
  * forward
