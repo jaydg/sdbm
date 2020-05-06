@@ -168,8 +168,6 @@ This distribution of \fIsdbm\fP includes (at least) the following:
 	dbd.c		a crude (n/s)dbm page file dumper (for conversion)
 	dbe.1		man page for dbe.c
 	dbe.c		Janick's database editor
-	dbm.c		a dbm library emulation wrapper for ndbm/sdbm
-	dbm.h		header file for the above
 	dbu.c		a crude db management utility
 	hash.c		hashing function
 	makefile	guess.

@@ -8,7 +8,7 @@ CFLAGS = -O -DSDBM -DDUFF
 OBJS = sdbm.o pair.o hash.o
 SRCS = sdbm.c pair.c hash.c dbu.c dba.c dbd.c util.c
 HDRS = tune.h sdbm.h pair.h
-MISC = README CHANGES COMPARE sdbm.3 dbe.c dbe.1 dbm.c dbm.h biblio \
+MISC = README CHANGES COMPARE sdbm.3 dbe.c dbe.1 \
        readme.ms readme.ps
 
 all: dbu dba dbd dbe
