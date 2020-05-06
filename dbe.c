@@ -317,6 +317,8 @@ db_exit:
 	dbm_close(db);
 	if (dbm_error(db)) {
 		fprintf(stderr, "Error closing database \"%s\"\n", comarg[0]);
-		exit(-1);
+		return EXIT_FAILURE;
 	}
+
+    return EXIT_SUCCESS;
 }
