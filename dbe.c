@@ -1,3 +1,7 @@
+#ifdef __linux
+# define _XOPEN_SOURCE
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -215,7 +219,7 @@ main(int argc, char **argv)
 			fprintf(stderr, "Missing regular expression.\n");
 			goto db_exit;
 		}
-		if (!regcomp(re, comarg[1], REG_BASIC | REG_NOSUB)) {
+		if (!regcomp(re, comarg[1], REG_NOSUB)) {
 			fprintf(stderr, "Invalid regular expression\n");
 			goto db_exit;
 		}
