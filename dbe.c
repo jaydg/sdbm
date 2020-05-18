@@ -93,20 +93,17 @@ main(int argc, char **argv)
 		YOW, FETCH, STORE, DELETE, SCAN, REGEXP
 	} commands;
 	char opt;
-	int flags;
+	int flags = O_RDWR;
 	int giveusage = 0;
 	int verbose = 0;
 	commands what = YOW;
 	char *comarg[3];
 	int st_flag = DBM_INSERT;
-	int argn;
+	int argn = 0;
 	DBM *db;
 	datum key;
 	datum content;
 	regex_t *re = NULL;
-
-	flags = O_RDWR;
-	argn = 0;
 
 	while ((opt = getopt(argc, argv, "acdfFm:rstvx")) != -1) {
 		switch (opt) {
