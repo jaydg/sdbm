@@ -97,9 +97,7 @@ main(int argc, char **argv)
 	int giveusage = 0;
 	int verbose = 0;
 	commands what = YOW;
-	char *comarg[3];
 	int st_flag = DBM_INSERT;
-	int argn = 0;
 	DBM *db;
 	datum key;
 	datum content;
@@ -150,34 +148,29 @@ main(int argc, char **argv)
 		case 'x':
 			flags |= O_EXCL;
 			break;
-		case '!':
+		default:
 			giveusage = 1;
-			break;
-		case '?':
-			if (argn < 3)
-				comarg[argn++] = optarg;
-			else {
-				fprintf(stderr, "Too many arguments.\n");
-				giveusage = 1;
-			}
 			break;
 		}
 	}
 
-	if (giveusage | (what == YOW) | (argn < 1)) {
-		fprintf(stderr, "Usage: %s database [-m r|w|rw] [-crtx] -a|-d|-f|-F|-s [key [content]]\n", argv[0]);
+	if (giveusage | (what == YOW) | (argc < 1)) {
+		fprintf(stderr, "Usage: %s [-m r|w|rw] [-crtx] -a|-d|-f|-F|-s database [key [content]]\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
-	if ((db = dbm_open(comarg[0], flags, 0777)) == NULL) {
-		fprintf(stderr, "Error opening database \"%s\"\n", comarg[0]);
+	argc -= optind;
+	argv += optind;
+
+	if ((db = dbm_open(argv[0], flags, 0777)) == NULL) {
+		fprintf(stderr, "Error opening database \"%s\"\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
-	if (argn > 1)
-		key = read_datum(comarg[1]);
-	if (argn > 2)
-		content = read_datum(comarg[2]);
+	if (argc > 1)
+		key = read_datum(argv[1]);
+	if (argc > 2)
+		content = read_datum(argv[2]);
 
 	switch (what) {
 
@@ -212,11 +205,11 @@ main(int argc, char **argv)
 		break;
 
 	case REGEXP:
-		if (argn < 2) {
+		if (argc < 2) {
 			fprintf(stderr, "Missing regular expression.\n");
 			goto db_exit;
 		}
-		if (!regcomp(re, comarg[1], REG_NOSUB)) {
+		if (!regcomp(re, argv[1], REG_NOSUB)) {
 			fprintf(stderr, "Invalid regular expression\n");
 			goto db_exit;
 		}
@@ -249,7 +242,7 @@ main(int argc, char **argv)
 		break;
 
 	case FETCH:
-		if (argn < 2) {
+		if (argc < 2) {
 			fprintf(stderr, "Missing fetch key.\n");
 			goto db_exit;
 		}
@@ -273,7 +266,7 @@ main(int argc, char **argv)
 		break;
 
 	case DELETE:
-		if (argn < 2) {
+		if (argc < 2) {
 			fprintf(stderr, "Missing delete key.\n");
 			goto db_exit;
 		}
@@ -290,7 +283,7 @@ main(int argc, char **argv)
 		break;
 
 	case STORE:
-		if (argn < 3) {
+		if (argc < 3) {
 			fprintf(stderr, "Missing key and/or content.\n");
 			goto db_exit;
 		}
@@ -313,7 +306,7 @@ db_exit:
 	dbm_clearerr(db);
 	dbm_close(db);
 	if (dbm_error(db)) {
-		fprintf(stderr, "Error closing database \"%s\"\n", comarg[0]);
+		fprintf(stderr, "Error closing database \"%s\"\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
