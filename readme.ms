@@ -163,7 +163,6 @@ This distribution of \fIsdbm\fP includes (at least) the following:
 .P1
 	CHANGES		change log
 	README		this file.
-	biblio		a small bibliography on external hashing
 	dba.c		a crude (n/s)dbm page file analyzer
 	dbd.c		a crude (n/s)dbm page file dumper (for conversion)
 	dbe.1		man page for dbe.c
@@ -235,10 +234,6 @@ I have also included a copy of the
 your pleasure. You may find it more useful than the little
 .CW dbu
 utility.
-.PP
-.CW dbm.[ch]
-is a \fIdbm\fP library emulation on top of \fIndbm\fP
-(and hence suitable for \fIsdbm\fP). Written by Robert Elz.
 .PP
 The \fIsdbm\fP
 library has been around in beta test for quite a long time, and from whatever

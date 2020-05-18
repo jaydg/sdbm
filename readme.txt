@@ -147,7 +147,6 @@ This distribution of sdbm includes (at least) the following:
 
     CHANGES     change log
     README      this file.
-    biblio      a small bibliography on external hashing
     dba.c       a crude (n/s)dbm page file analyzer
     dbd.c       a crude (n/s)dbm page file dumper (for conversion)
     dbe.1       man page for dbe.c
@@ -206,9 +205,6 @@ databases that insist in including the terminating null.
 Editor)  by  Janick Bergeron [janick@bnr.ca] for your pleas-
 ure. You may find it more useful than the little  dbu  util-
 ity.
-
-     dbm.[ch] is a dbm library emulation on top of ndbm (and
-hence suitable for sdbm). Written by Robert Elz.
 
      The sdbm library has been around in beta test for quite
 a  long  time,  and from whatever little feedback I received
