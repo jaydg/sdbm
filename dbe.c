@@ -166,12 +166,12 @@ main(int argc, char **argv)
 
 	if (giveusage | (what == YOW) | (argn < 1)) {
 		fprintf(stderr, "Usage: %s database [-m r|w|rw] [-crtx] -a|-d|-f|-F|-s [key [content]]\n", argv[0]);
-		exit(-1);
+		return EXIT_FAILURE;
 	}
 
 	if ((db = dbm_open(comarg[0], flags, 0777)) == NULL) {
 		fprintf(stderr, "Error opening database \"%s\"\n", comarg[0]);
-		exit(-1);
+		return EXIT_FAILURE;
 	}
 
 	if (argn > 1)

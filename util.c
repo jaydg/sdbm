@@ -23,7 +23,7 @@ oops(const char *fmt, ...)
 		fprintf(stderr, " (%s)", strerror(errno));
 
 	fprintf(stderr, "\n");
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 int

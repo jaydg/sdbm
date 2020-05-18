@@ -196,7 +196,7 @@ badk(char *word)
 		fprintf(stderr, "%-8s%c", cmds[i].sname,
 			((i + 1) % 6 == 0) ? '\n' : ' ');
 	fprintf(stderr, "\n");
-	exit(1);
+	exit(EXIT_FAILURE);
 	/*NOTREACHED*/
 }
 
