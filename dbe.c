@@ -108,7 +108,7 @@ main(int argc, char **argv)
 	flags = O_RDWR;
 	argn = 0;
 
-	while ((opt = getopt(argc, argv, "acdfFm:rstvx")) != ':') {
+	while ((opt = getopt(argc, argv, "acdfFm:rstvx")) != -1) {
 		switch (opt) {
 		case 'a':
 			what = SCAN;

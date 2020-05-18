@@ -66,7 +66,7 @@ main(int argc, char *argv[])
 
 	progname = argv[0];
 
-	while ((c = getopt(argc, argv, "R")) != EOF)
+	while ((c = getopt(argc, argv, "R")) != -1)
 		switch (c) {
 		case 'R':	       /* raw processing  */
 			rflag++;
