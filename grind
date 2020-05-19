@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 rm -f "/tmp/$2.dir" "/tmp/$2.pag"
 awk '{
         printf "%s\t", $0
