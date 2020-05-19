@@ -160,28 +160,11 @@ delpair(char *pag, datum key)
  * shift data/keys down
  */
 		m = ino[i + 1] - ino[n];
-#ifdef DUFF
-#define MOVB 	*--dst = *--src
-
-		if (m > 0) {
-			int loop = (m + 8 - 1) >> 3;
-
-			switch (m & (8 - 1)) {
-			case 0:	do {
-				MOVB;	case 7:	MOVB;
-			case 6:	MOVB;	case 5:	MOVB;
-			case 4:	MOVB;	case 3:	MOVB;
-			case 2:	MOVB;	case 1:	MOVB;
-				} while (--loop);
-			}
-		}
-#else
 #ifdef MEMMOVE
 		memmove(dst - m, src - m, m);
 #else
 		while (m--)
 			*--dst = *--src;
-#endif
 #endif
 /*
  * adjust offset index up
