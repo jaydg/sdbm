@@ -8,6 +8,10 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef TIME
+# include <sys/time.h>
+#endif
+
 #include "sdbm.h"
 #include "util.h"
 
@@ -97,8 +101,8 @@ doit(cmd *act, char *file)
 	int n;
 	char *line;
 #ifdef TIME
-	long start;
-	extern long time();
+	struct timeval start, end;
+	long diff;
 #endif
 
 	if ((db = dbm_open(file, act->flags, 0644)) == NULL)
@@ -150,7 +154,7 @@ doit(cmd *act, char *file)
 		break;
 	case DBUILD:
 #ifdef TIME
-		start = time(0);
+		gettimeofday(&start, NULL);
 #endif
 		while (fgets(line, LINEMAX, stdin) != NULL) {
 			n = strlen(line) - 1;
@@ -172,7 +176,11 @@ doit(cmd *act, char *file)
 			}
 		}
 #ifdef TIME
-		printf("done: %d seconds.\n", time(0) - start);
+		gettimeofday(&end, NULL);
+		diff = ( end.tv_usec - start.tv_usec )
+			+ ( end.tv_sec - start.tv_sec ) * 1000000L;
+
+		printf("done: %ld µs.\n", diff);
 #endif
 		break;
 	case DPRESS:
